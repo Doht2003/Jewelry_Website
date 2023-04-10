@@ -1,0 +1,5 @@
+- đăng ký 
+- đăng nhập
+- thêm
+- sửa 
+- xóa
