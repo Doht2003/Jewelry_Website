@@ -2,19 +2,19 @@ import React, { useEffect, useState } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { Button, Checkbox, Form, Input, Select } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import { IProduct } from '../../interface/product';
 import { Option } from 'antd/es/mentions';
+import { ICategory } from '../../../interface/category';
 
 interface IProps {
-    onAdd: (product: IProduct) => void;
+    onAdd: (category: ICategory) => void;
 }
-const AddProductPage = (props: IProps) => {
+const AddCategoryPage = (props: IProps) => {
 
     const navigate = useNavigate()
 
     const onFinish = (values: any) => {
         props.onAdd(values);
-        navigate('/admin/products')
+        navigate('/admin/categories')
     };
 
     const onFinishFailed = (errorInfo: any) => {
@@ -40,42 +40,9 @@ const AddProductPage = (props: IProps) => {
                     <Input />
                 </Form.Item>
 
-                <Form.Item
-                    label="Product Price"
-                    name="price"
-                    rules={[{ required: true, message: 'Please input your password!' }]}
-                >
-                    <Input />
-                </Form.Item>
-
-                <Form.Item
-                    label="Product Image"
-                    name="image"
-                    rules={[{ required: true, message: 'Please input your image!' }]}
-                >
-                    <Input />
-                </Form.Item>
-
-                <Form.Item
-                    label="Product Description"
-                    name="description"
-                    rules={[{ required: true, message: 'Please input your description!' }]}
-                >
-                    <Input />
-                </Form.Item>
-
-                <Form.Item
-                    label="Product Ctegory"
-                    name="categoryId"
-                    rules={[{ required: true, message: 'Please input your category!' }]}
-                >
-                    <Input />
-                </Form.Item>
-
-
                 <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
                     <Button type="primary" htmlType="submit" style={{ backgroundColor: '#4096ff' }}>
-                        Add New Product
+                        Add New Category
                     </Button>
                 </Form.Item>
             </Form>
@@ -83,4 +50,4 @@ const AddProductPage = (props: IProps) => {
     )
 }
 
-export default AddProductPage
+export default AddCategoryPage

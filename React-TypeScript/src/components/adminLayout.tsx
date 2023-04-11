@@ -29,7 +29,7 @@ function getItem(
 }
 
 const items: MenuItem[] = [
-  getItem('Dashboard', '1', <Dashboard />),
+  getItem('', '1', <Dashboard />),
   getItem('Option 2', '2', <DesktopOutlined />),
   getItem('User', 'sub1', <UserOutlined />, [
     getItem('Tom', '3'),

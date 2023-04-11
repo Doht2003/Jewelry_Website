@@ -14,7 +14,7 @@ const UpdateProductPage = (props: IProps) => {
 
     const [product, setProduct] = useState<IProduct>() // khởi tạo biến state product có kiểu dữ liệu là IProduct
     useEffect(() => { // khi props thay đổi thì sẽ chạy useEffect này
-        const currentProduct = props.products.find((product: IProduct) => product._id == Number(id))
+        const currentProduct = props.products.data?.find((product: IProduct) => product._id == (id))
         // tìm trong mảng props.products có phần tử nào có id trùng với id trên url không
         setProduct(currentProduct) // nếu có thì set lại giá trị cho biến product
     }, [props])
@@ -27,9 +27,12 @@ const UpdateProductPage = (props: IProps) => {
 
     const setFields = () => {// hàm này để set lại giá trị cho các input
         form.setFieldsValue({ // gọi hàm setFieldsValue của instance form để set lại giá trị cho các input dựa vào giá trị của biến product
-            id: product?._id,
+            _id: product?._id,
             name: product?.name,
-            price: product?.price
+            price: product?.price,
+            image: product?.image,
+            description: product?.description,
+            categoryId: product?.categoryId,
         })
     }
 
@@ -48,7 +51,7 @@ const UpdateProductPage = (props: IProps) => {
                 {/* đoạn này cần truyền cả id vào form khi submit để lấy được giá trị id truyền lên component App */}
                 <Form.Item
                     label=""
-                    name="id"
+                    name="_id"
                     style={{ display: 'none' }} // ẩn input này đi
                     rules={[{ required: true, message: 'Please input your username!' }]}
                 >
@@ -71,22 +74,34 @@ const UpdateProductPage = (props: IProps) => {
                 >
                     <Input />
                 </Form.Item>
+                
+                <Form.Item
+                    label="Product Image"
+                    name="image"
+                    rules={[{ required: true, message: 'Please input your image!' }]}
+                >
+                    <Input />
+                </Form.Item>
 
                 <Form.Item
-                    name="Product Category"
-                    label="category"
-                    rules={[{ required: true, message: 'Please select gender!' }]}
+                    label="Product Description"
+                    name="description"
+                    rules={[{ required: true, message: 'Please input your description!' }]}
                 >
-                    <Select placeholder="select your gender">
-                    <Option value="male">Male</Option>
-                    <Option value="female">Female</Option>
-                    <Option value="other">Other</Option>
-                    </Select>
+                    <Input />
+                </Form.Item>
+
+                <Form.Item
+                    label="Product Ctegory"
+                    name="categoryId"
+                    rules={[{ required: true, message: 'Please input your category!' }]}
+                >
+                    <Input />
                 </Form.Item>
 
 
                 <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-                    <Button type="primary" htmlType="submit">
+                    <Button type="primary" htmlType="submit" style={{ backgroundColor: '#4096ff' }}>
                         Update Product
                     </Button>
                 </Form.Item>

@@ -25,5 +25,9 @@ export const createProduct = (product: IProduct) => {
     })
 }
 export const updateProduct = (product: IProduct) => {
-    return instance.patch(`/products/${product._id}`, product)
+    return instance.patch(`/products/${product._id}`, product,{
+        headers: {
+            Authorization: `Bearer ${accessToken}`
+        },
+    })
 }
