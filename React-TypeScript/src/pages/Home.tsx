@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { IProduct } from '../interface/product'
+import { Link } from 'react-router-dom';
 
 type ProductListProps = {
     products: IProduct[];
@@ -21,9 +22,9 @@ const HomePage = ({products}: ProductListProps) => {
         {products.data?.map((item: IProduct) => {
                 return (
                         <div key={item._id}>
-                            <img src={item.image} alt=""/>
-                            <p className="text-xl mt-6 mb-4">{item.name}</p>
-                            <p className="col_a18A68 text-xl font-medium">$ {item.price}</p>
+                            <img src={item?.image} alt=""/>
+                            <p className="text-xl mt-6 mb-4"><Link to={`/products/${item._id}/`}>{item?.name}</Link></p>
+                            <p className="col_a18A68 text-xl font-medium">$ {item?.price}</p>
                         </div>
                         )
             })}

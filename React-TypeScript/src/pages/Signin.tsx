@@ -7,6 +7,7 @@ type Props = {}
 
 const SignIn = (props: Props) => {
     const navigate = useNavigate()
+    const {user} = JSON.parse(localStorage.getItem("user")!);
     const {
         register,
         handleSubmit,

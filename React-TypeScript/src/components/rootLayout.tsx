@@ -9,7 +9,7 @@ const RootLayout = (props: Props) => {
         <header>
             <menu className='flex justify-between fixed top-0 left-0 right-0 bg-white max-w-screen-xl m-auto py-4'>
               <div className="logo">
-                  <a href="./index.html"><img src="./assets/img/logo.png" alt="" /></a>
+                  <a href="/"><img src="./assets/img/logo.png" alt="" /></a>
               </div>
               <nav className="flex space-x-8">
                     <ul className="flex space-x-8">
